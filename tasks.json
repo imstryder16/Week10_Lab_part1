@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "description": "homework",
+        "priority": "medium",
+        "completed": true
+    },
+    {
+        "description": "drive home",
+        "priority": "high",
+        "completed": false
+    }
+]

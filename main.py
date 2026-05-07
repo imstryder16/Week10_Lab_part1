@@ -14,13 +14,18 @@ def save_tasks(tasks):
         json.dump(tasks, file, indent=4)
 
 def add_task(tasks, description):
+    priority = input("Enter priority (low/medium/high) [default: medium]: ").strip().lower()
+    if priority not in ["low", "medium", "high"]:
+        priority = "medium"
+    
     task = {
         "description": description,
+        "priority": priority,
         "completed": False
     }
     tasks.append(task)
     save_tasks(tasks)
-    print("Task added successfully")
+    print("Task saved successfully")
 
 def list_tasks(tasks):
     if len(tasks) == 0:
@@ -46,6 +51,10 @@ def delete_task(tasks, index):
     tasks.pop(index)
     save_tasks(tasks)
     print("Task deleted")
+def count_tasks(tasks):
+    total = len(tasks)
+    completed = sum(1 for task in tasks if task["completed"])
+    print(f"Total tasks: {total}, Completed tasks: {completed}")
 
 def main():
     tasks = load_tasks()
